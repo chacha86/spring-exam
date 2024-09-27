@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springexam.article.dao.ArticleDao">
+
+    <resultMap id="article" type="com.example.springexam.article.entity.Article" />
+
+    <insert id="save" parameterType="com.example.springexam.article.entity.Article">
+        INSERT INTO article2
+                SET  title = #{title}
+                    ,body = #{body}
+    </insert>
+    <update id="update" parameterType="com.example.springexam.article.entity.Article">
+        UPDATE article2
+           SET  title = #{title}
+               ,body = #{body}
+         WHERE id = #{id}
+    </update>
+    <delete id="deleteById" parameterType="long">
+        DELETE FROM article2
+              WHERE id = #{id}
+    </delete>
+    <select id="findById" parameterType="long" resultType="com.example.springexam.article.entity.Article">
+        SELECT *
+          FROM article2
+         WHERE id = #{id}
+    </select>
+    <select id="findAll" resultType="com.example.springexam.article.entity.Article">
+        SELECT *
+          FROM article2
+    </select>
+</mapper>
